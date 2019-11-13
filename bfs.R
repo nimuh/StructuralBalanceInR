@@ -21,14 +21,8 @@ get_edge_sign_ht <- function(g) {
 get_adj <- function(queue, v, g, nodes) {
   n <- neighbors(g, v)
   for (i in 1:length(n)) {
-    #if (nodes[as.numeric(n[i]), 'visited'] == FALSE) {
-      #print(v)
-      #print(as.numeric(n[i]))
-      #print(c(v, as.numeric(n[i])))
-      e <- c(as.numeric(v),as.numeric(n[i]))
-      #print(e)
-      enqueue(queue, e)
-    #}
+    e <- c(as.numeric(v),as.numeric(n[i]))
+    enqueue(queue, e)
   }
 }
 
@@ -120,6 +114,5 @@ g4 <- graph_from_literal(1-4, 1-5, 1-6, 2-4, 2-5, 2-6, 3-4, 3-5, 3-6)
 E(g4)$sign <- c(1, 0, 1, 1, 0, 1, 1, 0, 1)
 get.data.frame(g4)
 positive_vibes_only(g4)
-
 
 
