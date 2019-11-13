@@ -52,7 +52,7 @@ get_edge_product <- function(tri, ht, directed=TRUE) {
   product
 }
 
-# This function takes in a graph and a hash table 
+# This function takes in a graph and a hash table
 # (R hashed environment) mapping edges to their sign values
 # returns a closure that takes in a triangle and returns the
 # product of the sign of its associated edges via get_edge_product
@@ -63,7 +63,7 @@ get_edge_product_closure <- function(g, ht) {
 }
 
 # A CPP implementation of counting good and bad triangles for optimized looping
-# For/while loops are far too slow in R, so this function is needed 
+# For/while loops are far too slow in R, so this function is needed
 cppFunction('NumericVector countTriangles(NumericVector tris, Function get_edge_prod) {
     int good = 0;
     int bad = 0;
@@ -89,9 +89,11 @@ cppFunction('NumericVector countTriangles(NumericVector tris, Function get_edge_
 # This function is an improvement on a function written
 # by Gabor Csardi Thu May 24 16:43:40 CEST 2007 and later
 # modified by Professor Daniel Suthers
-# The improved structural balance function that makes use
-# of the edge_product_closure and optimized C++ counting function
-# returns the counts of the good and bad triangles in the graph
+#' The improved structural balance function that makes use
+#' of the edge_product_closure and optimized C++ counting function
+#' @param g the graph to be evaluated
+#' @return the counts of the good and bad triangles in the graph
+
 structural.balance.improved <- function(g) {
   get_prod <- get_edge_product_closure(g, ht)
   tris <- triangles(g)

@@ -1,0 +1,16 @@
+Package: structuralBalance
+Type: Package
+Title: Computes the Structural Balance Score of a Graph
+Version: 0.1.0
+Authors@R: person("Nima", "Azbijari", email = "nazbijar@hawaii.edu", role = c("aut")),
+    person("Katrina", "Turner", email = "khj@hawaii.edu", role = c("aut")),
+    person("Billy Troy", "Wooton", email = "bwooton@hawaii.edu", role = c("aut"))
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: This package calculates and returns the relative signed clustering
+    coefficent of an undirected graph.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+    igraph (>= 1.2.4),
+    Rcpp (>= 1.0.2)
