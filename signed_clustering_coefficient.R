@@ -1,7 +1,3 @@
-# Sourcing all library dependencies
-library(igraph)
-library(Rcpp)
-
 # Helper function which takes in a signed graph g
 # returning a HashTable mapping edges to their sign values
 # Keys are stored as edge<from><to>
@@ -94,7 +90,7 @@ cppFunction('NumericVector countTriangles(NumericVector tris, Function get_edge_
 #' @param g the graph to be evaluated
 #' @return the counts of the good and bad triangles in the graph
 
-structural.balance.improved <- function(g) {
+signed_clustering_coefficient <- function(g) {
   get_prod <- get_edge_product_closure(g, ht)
   tris <- triangles(g)
   ht <- get_edge_sign_ht(g)
