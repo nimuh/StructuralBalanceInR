@@ -68,7 +68,7 @@ positive_vibes_only <- function(g) {
             
           }
           # if neighbor negative and in the same cluster
-          else if (edge_signs[[ename]] == 0 & df_nodes[e[2], "visited"] == TRUE) {
+          else if (edge_signs[[ename]] == -1 & df_nodes[e[2], "visited"] == TRUE) {
             
             if (df_nodes[e[2], 'super'] == df_nodes[e[1], 'super']) {
               # remove from cluster
@@ -101,12 +101,12 @@ positive_vibes_only(g1)
 
 # 2 super nodes
 g2 <- graph_from_literal(1-2, 1-3, 2-3)
-E(g2)$sign <- c(1, 1, 0)
+E(g2)$sign <- c(1, 1, -1)
 positive_vibes_only(g2)
 
 # 2 super nodes
 g3 <- graph_from_literal(1-2, 1-3, 2-3, 3-4)
-E(g3)$sign <- c(1, 1, 0, 1)
+E(g3)$sign <- c(1, 1, -1, 1)
 positive_vibes_only(g3)
 
 # bipartite graph (this is weird, I don't know why it gives these supers)
