@@ -47,7 +47,8 @@ positive_vibes_only <- function(g) {
     
     if (df_nodes[i, 'visited'] == FALSE) {
       
-      curr <- df_edges[i, 'from']
+      #curr <- df_edges[i, 'from']
+      curr <- i
       df_nodes[i, "visited"] <- TRUE
       df_nodes[i, "super"] <- super_nu
       get_adj(q, curr, g, df_nodes)
