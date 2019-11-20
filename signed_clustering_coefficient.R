@@ -96,7 +96,7 @@ signed_clustering_coefficient <- function(g) {
   ht <- get_edge_sign_ht(g)
   counts <- countTriangles(tris, get_prod)
   relative_signed_cc <- (counts[1] - counts[2]) / (counts[1] + counts[2])
-  signed_cc <- relative_signed_cc * transitivity(NS, "global")
+  signed_cc <- relative_signed_cc * transitivity(g, "global")
   list(
     good=counts[1], bad=counts[2], 
     relative_signed_cc=relative_signed_cc,
