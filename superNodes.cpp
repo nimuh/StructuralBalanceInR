@@ -65,7 +65,6 @@ DataFrame create_super_nodes(DataFrame g_v, DataFrame g_e) {
 
         S = nias.front();
         nias.pop();
-        Rcout << supers[S] << std::endl;
         if (supers[S] != "-1") {
             continue;
         }
@@ -105,5 +104,10 @@ DataFrame create_super_nodes(DataFrame g_v, DataFrame g_e) {
 
     }
 
-    return supers;
+    for (int i = 0; i < names.size(); i++) {
+        std::string name = (node + std::string(names[i]));
+        super[i] = supers[name];
+    }
+    DataFrame df = DataFrame::create(Named("names") = names, Named("supers") = super);
+    return df;
 }
