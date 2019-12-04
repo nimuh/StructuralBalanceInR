@@ -39,8 +39,10 @@ DataFrame create_super_nodes(DataFrame g_v, DataFrame g_e) {
     }
 
     for (int i = 0; i < from.size(); i++) {
-        std::string edge_name = (node + std::string(from[i]) + node + std::string(to[i]));
-        signs[edge_name] = sign[i];
+        std::string edge_name1 = (node + std::string(from[i]) + node + std::string(to[i]));
+        std::string edge_name2 = (node + std::string(to[i]) + node + std::string(from[i]));
+        signs[edge_name1] = sign[i];
+        signs[edge_name2] = sign[i];
     }
 
     for (int i = 0; i < names.size(); i++) {
