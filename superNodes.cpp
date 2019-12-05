@@ -53,6 +53,12 @@ DataFrame create_super_nodes(DataFrame g_v, DataFrame g_e) {
                 adj.push_back(nei_name);
             }
         }
+        for (int j = 0; j < to.size(); j++) {
+          if (names[i] == to[j]) {
+            std::string nei_name = (node + from[j]);
+            adj.push_back(nei_name);
+          }
+        }
         std::string curr = (node + names[i]);
         neigh[curr] = adj;
     }
