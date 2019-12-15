@@ -50,13 +50,23 @@ cppFunction('NumericVector countTriangles(NumericVector tris, Environment ht) {
     return result;
 }')
 
-# This function is an improvement on a function written
-# by Gabor Csardi Thu May 24 16:43:40 CEST 2007 and later
-# modified by Professor Daniel Suthers
+#' Signed clustering coefficient
+#'
+#' This function calculates the relative signed clustering
+#' coefficient by counting the number of balance and unbalanced
+#' triangles in the the graph.  It returns a list with the counts
+#' of the good and bad triangles in the graph, the relative signed
+#' clustering coeffecient, and the signed clustering coeffecient.
+#'
+#' This function is an improvement on a function written
+#' by Gabor Csardi Thu May 24 16:43:40 CEST 2007 and later
+#' modified by Professor Daniel Suthers
 #' The improved structural balance function that makes use
 #' of the edge_product_closure and optimized C++ counting function
+#'
 #' @param g the graph to be evaluated
-#' @return the counts of the good and bad triangles in the graph
+#' @return a list with the counts of the good and bad triangles in the graph, the relative signed clustering coeffecient, and the signed clustering coeffecient
+#'
 signed_clustering_coefficient <- function(g) {
   tris <- triangles(g)
   ht <- get_edge_sign_ht(g)
@@ -64,7 +74,7 @@ signed_clustering_coefficient <- function(g) {
   relative_signed_cc <- (counts[1] - counts[2]) / (counts[1] + counts[2])
   signed_cc <- relative_signed_cc * transitivity(g, "global")
   list(
-    good=counts[1], bad=counts[2], 
+    good=counts[1], bad=counts[2],
     relative_signed_cc=relative_signed_cc,
     signed_cc=signed_cc
   ) # DS added the field names.
